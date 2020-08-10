@@ -5,9 +5,6 @@ import QuoteContainer from '../components/QuoteContainer';
 
 export default function PullQuotes() {
   return (
-    <div>
-      <h1>PullQuotes</h1>
       <QuoteContainer />
-    </div>
   );
 }
