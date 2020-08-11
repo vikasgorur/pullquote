@@ -10,4 +10,5 @@
     font-size: 36px;
     overflow-wrap: break-word;
     padding: 12px;
+    border-bottom: 2px solid #000000;
 }
