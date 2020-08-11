@@ -2,10 +2,11 @@
     background-color: #FFF4D8;
     width: 800px;
     height: 450px;
+    box-shadow: -8px 8px rgba(0, 0, 0, 0.25);
 }
 
 .quote_text {
-    height: 300px;
+    height: 360px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 36px;
     overflow-wrap: break-word;

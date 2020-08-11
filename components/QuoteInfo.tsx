@@ -1,6 +1,16 @@
 import ContentEditable from 'react-contenteditable';
 import styles from './QuoteInfo.module.css';
 
+const placeHolderYear = `<div class=${styles.quote_year}>1986</div>`;
+function Year(props) {
+    const { year } = props;
+    return <ContentEditable
+        html={placeHolderYear}
+        disabled={false}
+        onChange={(e) => e}
+    />
+}
+
 const placeHolderAuthor = `<div class=${styles.quote_title}>Leo Tolstoy</div>`;
 
 function Author(props) {
@@ -26,9 +36,12 @@ function Title(props) {
 export default function QuoteInfo(props) {
     const { quote: string } = props;
     return (
-        <div>
-            <Title />
-            <Author />
+        <div className={styles.quote_info}>
+            <Year />
+            <div>
+                <Title />
+                <Author />
+            </div>
         </div>
     )
 }
