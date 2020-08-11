@@ -1,0 +1,13 @@
+.quote_card {
+    background-color: #FFF4D8;
+    width: 800px;
+    height: 450px;
+}
+
+.quote_text {
+    height: 300px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 36px;
+    overflow-wrap: break-word;
+    padding: 12px;
+}

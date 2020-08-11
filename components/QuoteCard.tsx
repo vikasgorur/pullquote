@@ -1,7 +1,10 @@
-export default function QuoteCard(props) {
-    const { quote } = props;
+import styles from './QuoteCard.module.css';
+import QuoteText from './QuoteText'
 
+export default function QuoteCard(props) {
     return (
-        <h2>"{quote}"</h2>
+        <div className={styles.quote_card}>
+            <QuoteText />
+        </div>
     );
 }
