@@ -5,29 +5,27 @@ import styles from './QuoteInfo.module.css';
 
 import { searchQuote } from '../lib/gbooks';
 
-const placeHolderYear = `<div class=${styles.quote_year}>1986</div>`;
+const yearHtml = (value: number) => `<div class=${styles.quote_year}>${value}</div>`;
 function Year(props) {
     const { year } = props;
     return <ContentEditable
-        html={placeHolderYear}
+        html={yearHtml(year)}
         disabled={false}
         onChange={(e) => e}
     />
 }
 
-const placeHolderAuthor = `<div class=${styles.quote_title}>Leo Tolstoy</div>`;
-
+const authorHtml = (value: string) => `<div class=${styles.quote_title}>${value}</div>`;
 function Author(props) {
     const { author } = props;
     return <ContentEditable
-        html={placeHolderAuthor}
+        html={authorHtml(author)}
         disabled={false}
         onChange={(e) => e}
     />
 }
 
 const titleHtml = (value: string) => `<div class=${styles.quote_title}>${value}</div>`;
-
 function Title(props) {
     const { title } = props;
     
@@ -39,21 +37,22 @@ function Title(props) {
 }
 
 export default function QuoteInfo(props) {
-    const { quote: string } = props;
+    const { quote } = props;
     const { data, error } = useSWR(
-        "We were somewhere around Barstow, on the edge of the desert when the drugs began to take hold.",
+        quote,
         searchQuote
     );
     
-    let title = (data && data.title) || "";
-    console.dir(data);
-    console.log(error);
+    let title = data?.title;
+    let author = data?.author;
+    let year = data?.year;
+
     return (
         <div className={styles.quote_info}>
-            <Year />
+            <Year year={year}/>
             <div>
                 <Title title={title}/>
-                <Author />
+                <Author author={author} />
             </div>
         </div>
     )
