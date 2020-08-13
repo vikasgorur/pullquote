@@ -35,12 +35,13 @@ function Title(props) {
 }
 
 export default function QuoteInfo(props) {
+    const { author, title, year } = props;
     return (
         <div className={styles.quote_info}>
-            <Year year={"9"}/>
+            <Year year={year}/>
             <div>
-                <Title title={"Anna Karenina"}/>
-                <Author author={"Tolstyo"} />
+                <Title title={title}/>
+                <Author author={author} />
             </div>
         </div>
     )

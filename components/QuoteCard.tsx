@@ -32,13 +32,14 @@ export default class QuoteCard extends React.Component {
 
     render() {
         const { send } = this.service;
+        const { title, author, year } = this.state.current.context;
 
         return (
             <div className={styles.quote_card} ref={this.card}>
                 <QuoteText onQuoteChange={(quote) => {
                     send({ type: 'edit_quote', quote })
                 }} />
-                <QuoteInfo quote={""}/>
+                <QuoteInfo title={title} author={author} year={year} />
             </div>
         );
     }
