@@ -13,7 +13,7 @@ type EditQuoteEvent = { type: "edit_quote", quote: string }
 
 type QuoteUIEvent = EditQuoteEvent
     | { type: "edit_info", author: string, title: string, year: string }
-    | { type: "lookup" }
+    | { type: "finish_quote" }
 
 interface QuoteUIContext {
     quote: string,
@@ -21,6 +21,13 @@ interface QuoteUIContext {
     title: string,
     year: string
 }
+
+/**
+ * We try to do the Google Books search two times before the user is done editing:
+ *  - when the user has typed 24 chars
+ *  - when the user has typed 36 chars
+ */
+const shouldEarlySearch = (context, event) => (context.quote.length === 24 || context.quote.length === 36);
 
 /**
  * This statemachine implements the following behavior:
@@ -40,8 +47,11 @@ export const quoteUIMachine = Machine<QuoteUIContext, QuoteUISchema, QuoteUIEven
         states: {
             editing: {
                 on: {
-                    edit_quote: { target: 'searching', actions: ['setQuote']},
-                    lookup: { target: 'searching' },
+                    edit_quote: [
+                        { target: 'searching', cond: shouldEarlySearch, actions: ['setQuote'] },
+                        { target: 'editing', actions: ['setQuote'] }
+                    ],
+                    finish_quote: { target: 'searching' },
                     edit_info: 'info_edited',
                 }
             },

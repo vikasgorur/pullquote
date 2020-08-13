@@ -8,6 +8,7 @@ interface QuoteTextState {
 
 interface QuoteTextProps {
     onQuoteChange(quote: string)
+    onQuoteFinish(quote: string)
 }
 
 export default class QuoteText extends React.Component<QuoteTextProps, QuoteTextState> {
@@ -24,6 +25,10 @@ export default class QuoteText extends React.Component<QuoteTextProps, QuoteText
         this.props.onQuoteChange(e.target.value);
     };
 
+    handleBlur = e => {
+        this.props.onQuoteFinish(e.target.value);
+    }
+
     render() {
         return (
             <ContentEditable
@@ -31,6 +36,7 @@ export default class QuoteText extends React.Component<QuoteTextProps, QuoteText
                 disabled={false}
                 className={styles.quote_text}
                 onChange={this.handleChange}
+                onBlur={this.handleBlur}
             />
         )
     }
