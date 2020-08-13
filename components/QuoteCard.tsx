@@ -39,7 +39,12 @@ export default class QuoteCard extends React.Component {
                 <QuoteText onQuoteChange={(quote) => {
                     send({ type: 'edit_quote', quote })
                 }} />
-                <QuoteInfo title={title} author={author} year={year} />
+                <QuoteInfo
+                    title={title}
+                    author={author}
+                    year={year}
+                    onInfoChange={() => send('edit_info')}
+                />
             </div>
         );
     }
