@@ -3,19 +3,41 @@ import styles from './QuoteCard.module.css';
 import QuoteText from './QuoteText'
 import QuoteInfo from './QuoteInfo';
 import { copyNodeToClipboard } from '../lib/image';
+import { interpret } from 'xstate';
+import { quoteUIMachine } from '../lib/machine';
 
 export default class QuoteCard extends React.Component {
-    card: React.Ref<Node>;
+    state = {
+        current: quoteUIMachine.initialState       
+    }
+
+    service = interpret(quoteUIMachine).onTransition(current =>
+        this.setState({ current })
+    );
+
+    card: React.Ref<HTMLDivElement>;
 
     constructor(props) {
         super(props);
         this.card = React.createRef();
     }
 
+    componentDidMount() {
+        this.service.start();
+    }
+
+    componentWillUnmount() {
+        this.service.stop();
+    }
+
     render() {
+        const { send } = this.service;
+
         return (
             <div className={styles.quote_card} ref={this.card}>
-                <QuoteText onQuoteChange={t => copyNodeToClipboard(this.card.current)} />
+                <QuoteText onQuoteChange={
+                    quote => send({ type: 'edit_quote', quote })
+                } />
                 <QuoteInfo quote={""}/>
             </div>
         );

@@ -3,8 +3,6 @@ import useSWR from 'swr';
 import ContentEditable from 'react-contenteditable';
 import styles from './QuoteInfo.module.css';
 
-import { searchQuote } from '../lib/gbooks';
-
 const yearHtml = (value: number) => `<div class=${styles.quote_year}>${value}</div>`;
 function Year(props) {
     const { year } = props;
@@ -37,22 +35,12 @@ function Title(props) {
 }
 
 export default function QuoteInfo(props) {
-    const { quote } = props;
-    const { data, error } = useSWR(
-        quote,
-        searchQuote
-    );
-    
-    let title = data?.title;
-    let author = data?.author;
-    let year = data?.year;
-
     return (
         <div className={styles.quote_info}>
-            <Year year={year}/>
+            <Year year={"9"}/>
             <div>
-                <Title title={title}/>
-                <Author author={author} />
+                <Title title={"Anna Karenina"}/>
+                <Author author={"Tolstyo"} />
             </div>
         </div>
     )
