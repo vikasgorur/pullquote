@@ -2,28 +2,21 @@ import React from 'react';
 import ContentEditable from "react-contenteditable";
 import styles from './QuoteCard.module.css';
 
-const placeholderHtml = `
-    <div />
-`;
-
 interface QuoteTextState {
     html: string
 }
 
 interface QuoteTextProps {
-    onQuoteChange(quote: string);
+    onQuoteChange(quote: string)
 }
 
-export default class QuoteText extends React.Component {
+export default class QuoteText extends React.Component<QuoteTextProps, QuoteTextState> {
     contentEditable: React.Ref<HTMLDivElement>;
-
-    state: QuoteTextState
-    props: QuoteTextProps
 
     constructor(props: QuoteTextProps) {
         super(props);
         this.contentEditable = React.createRef();
-        this.state = { html: placeholderHtml }
+        this.state = { html: "" }
     }
 
     handleChange = e => {

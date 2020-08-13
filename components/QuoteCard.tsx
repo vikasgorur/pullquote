@@ -35,9 +35,9 @@ export default class QuoteCard extends React.Component {
 
         return (
             <div className={styles.quote_card} ref={this.card}>
-                <QuoteText onQuoteChange={
-                    quote => send({ type: 'edit_quote', quote })
-                } />
+                <QuoteText onQuoteChange={(quote) => {
+                    send({ type: 'edit_quote', quote })
+                }} />
                 <QuoteInfo quote={""}/>
             </div>
         );

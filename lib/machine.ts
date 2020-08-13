@@ -1,11 +1,10 @@
-import { Machine, assign } from 'xstate';
+import { Machine, assign, send } from 'xstate';
+import { searchQuote } from './lookup';
 
 interface QuoteUISchema {
     states: {
-        empty: {};
-        quote_filled: {};
-        info_empty: {};
-        info_filled: {};
+        editing: {};
+        searching: {};
         info_edited: {}
     }
 }
@@ -37,32 +36,40 @@ export const quoteUIMachine = Machine<QuoteUIContext, QuoteUISchema, QuoteUIEven
             title: "",
             year: ""
         },
-        initial: 'empty',
+        initial: 'editing',
         states: {
-            empty: {
+            editing: {
                 on: {
-                    edit_quote: { target: 'quote_filled', actions: ['setQuote']},
-                    edit_info: 'info_edited'
-                }
-            },
-            quote_filled: {
-                on: {
-                    edit_quote: { target: 'quote_filled', actions: ['setQuote']},
-                    edit_info: 'info_edited',
-                    lookup: ['info_filled', 'info_empty']
-                }
-            },
-            info_empty: {
-                on: {
-                    edit_quote: 'quote_filled',
+                    edit_quote: { target: 'searching', actions: ['setQuote']},
+                    lookup: { target: 'searching' },
                     edit_info: 'info_edited',
                 }
             },
-            info_filled: {
-                on: {
-                    edit_quote: 'quote_filled',
-                    edit_info: 'info_edited'
-                }
+            searching: {
+                invoke: {
+                    id: 'lookupInfo',
+                    src: (context, event: EditQuoteEvent) => {
+                        return searchQuote(context.quote)
+                    },
+                    onDone: {
+                        target: 'editing',
+                        actions: assign((context, event) => {
+                            if (event.data) {
+                                return {
+                                    quote: context.quote,
+                                    author: event.data.author,
+                                    title: event.data.title,
+                                    year: event.data.year
+                                }
+                            } else {
+                                return context;
+                            }
+                        })
+                    },
+                    onError: {
+                        target: 'editing',
+                    }
+                },
             },
             info_edited: {
                 on: {
@@ -74,11 +81,9 @@ export const quoteUIMachine = Machine<QuoteUIContext, QuoteUISchema, QuoteUIEven
     },
     {
         actions: {
-            setQuote: (context, event: EditQuoteEvent) => {
-                assign({
-                    quote: event.quote
-                });
-            }
+            setQuote: assign({
+                quote: (context, event: QuoteUIEvent) => (event as EditQuoteEvent).quote
+            }),
         }
     }
 );
