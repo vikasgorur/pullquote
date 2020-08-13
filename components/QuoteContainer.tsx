@@ -1,6 +1,7 @@
 import React from 'react';
 
 import QuoteCard from "./QuoteCard";
+import ActionBar from './ActionBar';
 
 export default function QuoteContainer(props) {
     return (
@@ -10,6 +11,7 @@ export default function QuoteContainer(props) {
                 <div className="">
                     <QuoteCard />
                 </div>
+                <ActionBar />
             </div>
         </div>
     )
