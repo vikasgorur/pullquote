@@ -30,7 +30,12 @@ export default class Editable extends React.Component<
   };
 
   handleFocus = () => {
-    document.execCommand('selectAll', false, null);
+    // @ts-ignore
+    if (this.contentEditable.current) {
+      // @ts-ignore
+      let elem = this.contentEditable.current;
+      document.getSelection().setBaseAndExtent(elem, 0, elem, elem.childNodes.length);
+    }
   }
 
   render() {
@@ -42,8 +47,10 @@ export default class Editable extends React.Component<
       <ContentEditable
         html={html}
         disabled={false}
-        className={this.props.className + " select-all"}
+        innerRef={this.contentEditable}
+        className={this.props.className}
         onChange={this.handleChange}
+        onFocus={this.handleFocus}
       />
     );
   }
