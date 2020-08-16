@@ -24,7 +24,7 @@ export default class QuoteText extends React.Component<
         this.state = {
             html:
                 "The impulse to write things down is a peculiarly compulsive one, inexplicable to those who do not share it, useful only"
-                + " accidentally, only secondarily, in the way that any compulsion tries to justify itself.",
+                + " accidentally, only secondarily, in the way that any compulsion tries to justify itself.<span>&rdquo;</span>",
             firstFocus: true,
         };
     }
@@ -41,7 +41,7 @@ export default class QuoteText extends React.Component<
 
     handleFocus = () => {
         if (this.state.firstFocus) {
-            this.setState({ html: "", firstFocus: false });
+            this.setState({ html: "<span>&rdquo;</span>", firstFocus: false });
         }
     }
 
