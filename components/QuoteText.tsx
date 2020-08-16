@@ -41,7 +41,7 @@ export default class QuoteText extends React.Component<
 
     handleFocus = () => {
         if (this.state.firstFocus) {
-            this.setState({ html: "", firstFocus: false });
+            this.setState({ html: "Your quote ...", firstFocus: false });
         }
     }
 
