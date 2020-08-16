@@ -25,5 +25,7 @@
   overflow-wrap: break-word;
   margin-top: 28px;
   margin-left: 36px;
+  min-height: 48px;
+  min-width: 360px;
   outline: 0px solid transparent;  
 }
