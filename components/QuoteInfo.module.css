@@ -9,15 +9,18 @@
 
 .quote_year {
   font-size: 36px;
+  outline: 0px solid transparent;  
 }
 
 .quote_title {
   padding-left: 24px;
   font-size: 24px;
   font-style: italic;
+  outline: 0px solid transparent;  
 }
 
 .quote_author {
   padding-left: 24px;
   font-size: 18px;
+  outline: 0px solid transparent;  
 }
