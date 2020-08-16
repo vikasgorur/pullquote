@@ -3,15 +3,19 @@ import React from "react";
 import QuoteCard from "./QuoteCard";
 import ActionBar from "./ActionBar";
 
+import styles from "./QuoteContainer.module.css";
+import HelpText from "./HelpText";
+
 export default function QuoteContainer(props) {
-  return (
-    <div className="container mx-auto px-40">
-      <div className="text-6xl">Pull Quote</div>
-      <div className="">
-        <div className="">
-          <QuoteCard />
+    return (
+        <div className="container mx-auto px-40">
+            <div className={styles.app_title}>Pull Quote</div>
+            <div className="">
+                <HelpText />
+                <div className="">
+                    <QuoteCard />
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
