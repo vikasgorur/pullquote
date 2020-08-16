@@ -2,8 +2,8 @@ module.exports = {
   purge: [],
   theme: {
     backgroundColor: theme => ({
-      primary: '#FBF0D9',
-      secondary: '#635bff', /* 'rgb(198, 196, 206)', */
+      primary: '#FBF0D9',   /* Kindle sepia background color */
+      secondary: '#635bff', /* Stripe button color -- stripe.com */
       paper: 'rgb(238, 238, 240)'
     }),
     extend: {},

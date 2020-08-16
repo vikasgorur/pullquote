@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./QuoteCard.module.css";
 import QuoteText from "./QuoteText";
 import QuoteInfo from "./QuoteInfo";
+import Watermark from "./Watermark";
 import ActionBar from "./ActionBar";
 import { copyNodeToClipboard } from "../lib/image";
 import { interpret } from "xstate";
@@ -55,6 +56,7 @@ export default class QuoteCard extends React.Component {
             year={year}
             onInfoChange={() => send("edit_info")}
           />
+          <Watermark />
         </div>
         <ActionBar onCopy={this.handleCopy} />
       </div>

@@ -1,0 +1,7 @@
+.watermark {
+  width: 98%;
+  text-align: right;
+  font-weight: 300;
+  margin-top: -16px;
+  box-sizing: content-box;
+}
