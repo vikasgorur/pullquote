@@ -1,26 +1,26 @@
 .quote_card {
-    background-color: #FFF4D8;
-    width: 800px;
-    height: 450px;
-    box-shadow: -8px 8px rgba(0, 0, 0, 0.25);
+  background-color: #fff4d8;
+  width: 800px;
+  height: 450px;
+  box-shadow: -8px 8px rgba(0, 0, 0, 0.25);
 }
 
 .quote_text {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 36px;
-    height: 360px;
-    padding: 12px;
-    border-bottom: 2px solid #000000;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 36px;
+  height: 360px;
+  padding: 12px;
+  border-bottom: 2px solid #000000;
 }
 
 .quote_open {
-    font-size: 72px;
-    position: absolute;
+  font-size: 72px;
+  position: absolute;
 }
 
 .quote_input {
-    display: inline-block;
-    overflow-wrap: break-word;
-    margin-top: 28px;
-    margin-left: 28px;
+  display: inline-block;
+  overflow-wrap: break-word;
+  margin-top: 28px;
+  margin-left: 28px;
 }

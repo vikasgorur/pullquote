@@ -1,20 +1,20 @@
 .quote_info {
-    padding-left: 12px;
-    padding-top: 12px;
-    display: flex;
-    align-items: center;
+  padding-left: 12px;
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
 }
 
 .quote_year {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 .quote_title {
-    padding-left: 24px;
-    font-size: 24px;
+  padding-left: 24px;
+  font-size: 24px;
 }
 
 .quote_author {
-    padding-left: 24px;
-    font-size: 18px;
+  padding-left: 24px;
+  font-size: 18px;
 }

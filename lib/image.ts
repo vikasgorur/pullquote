@@ -1,12 +1,12 @@
-import domtoimage from 'dom-to-image';
+import domtoimage from "dom-to-image";
 
 export async function copyNodeToClipboard(node: Node): Promise<void> {
-    const blob = await domtoimage.toBlob(node);
+  const blob = await domtoimage.toBlob(node);
+  // @ts-ignore
+  return navigator.clipboard.write([
     // @ts-ignore
-    return navigator.clipboard.write([
-        // @ts-ignore
-        new ClipboardItem({
-            "image/png": blob
-        })
-    ]);
+    new ClipboardItem({
+      "image/png": blob,
+    }),
+  ]);
 }

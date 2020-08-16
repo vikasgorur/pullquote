@@ -1,7 +1,5 @@
-import QuoteContainer from '../components/QuoteContainer';
+import QuoteContainer from "../components/QuoteContainer";
 
 export default function PullQuotes() {
-  return (
-      <QuoteContainer />
-  );
+  return <QuoteContainer />;
 }

@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 
 import QuoteCard from "./QuoteCard";
-import ActionBar from './ActionBar';
+import ActionBar from "./ActionBar";
 
 export default function QuoteContainer(props) {
-    return (
-        <div className="container mx-auto px-40">
-            <div className="text-6xl">Pull Quote</div>
-            <div className="">
-                <div className="">
-                    <QuoteCard />
-                </div>
-            </div>
+  return (
+    <div className="container mx-auto px-40">
+      <div className="text-6xl">Pull Quote</div>
+      <div className="">
+        <div className="">
+          <QuoteCard />
         </div>
-    )
+      </div>
+    </div>
+  );
 }
