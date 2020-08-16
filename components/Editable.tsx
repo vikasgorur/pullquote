@@ -15,7 +15,7 @@ interface EditableProps {
 export default class Editable extends React.Component<
   EditableProps,
   EditableState
-> {
+  > {
   contentEditable: React.Ref<HTMLDivElement>;
 
   constructor(props: EditableProps) {
@@ -29,15 +29,20 @@ export default class Editable extends React.Component<
     this.props.onContentChange();
   };
 
+  handleFocus = () => {
+    document.execCommand('selectAll', false, null);
+  }
+
   render() {
     let html = this.state.edited
       ? this.state.html
-      : `<div>${this.props.value}</div>`;
+      : this.props.value;
+
     return (
       <ContentEditable
         html={html}
         disabled={false}
-        className={this.props.className}
+        className={this.props.className + " select-all"}
         onChange={this.handleChange}
       />
     );

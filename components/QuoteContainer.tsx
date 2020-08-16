@@ -5,6 +5,7 @@ import ActionBar from "./ActionBar";
 
 import styles from "./QuoteContainer.module.css";
 import HelpText from "./HelpText";
+import Footer from "./Footer";
 
 export default function QuoteContainer(props) {
     return (
@@ -15,6 +16,7 @@ export default function QuoteContainer(props) {
                 <div className="">
                     <QuoteCard />
                 </div>
+                <Footer />
             </div>
         </div>
     );

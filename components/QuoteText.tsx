@@ -4,6 +4,7 @@ import styles from "./QuoteCard.module.css";
 
 interface QuoteTextState {
     html: string;
+    firstFocus: boolean;
 }
 
 interface QuoteTextProps {
@@ -23,7 +24,8 @@ export default class QuoteText extends React.Component<
         this.state = {
             html:
                 "The impulse to write things down is a peculiarly compulsive one, inexplicable to those who do not share it, useful only"
-                + " accidentally, only secondarily, in the way that any compulsion tries to justify itself."
+                + " accidentally, only secondarily, in the way that any compulsion tries to justify itself.",
+            firstFocus: true,
         };
     }
 
@@ -37,6 +39,12 @@ export default class QuoteText extends React.Component<
         this.props.onQuoteFinish(e.target.value);
     };
 
+    handleFocus = () => {
+        if (this.state.firstFocus) {
+            this.setState({ html: "", firstFocus: false });
+        }
+    }
+
     // <span>&rdquo;</span>
     render() {
         return (
@@ -48,6 +56,7 @@ export default class QuoteText extends React.Component<
                     className={styles.quote_input}
                     onChange={this.handleChange}
                     onBlur={this.handleBlur}
+                    onFocus={this.handleFocus}
                 />
             </div>
         );
