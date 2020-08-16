@@ -1,3 +1,7 @@
 .action_bar {
     margin-top: 20px;
 }
+
+.button {
+    outline: none;
+}

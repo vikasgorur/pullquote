@@ -17,7 +17,7 @@ export default class QuoteText extends React.Component<QuoteTextProps, QuoteText
     constructor(props: QuoteTextProps) {
         super(props);
         this.contentEditable = React.createRef();
-        this.state = { html: "" }
+        this.state = { html: "We were somewhere Barstow, at the edge of the desert, when the drugs began to take hold. We knew we would get into the ether soon enough." }
     }
 
     handleChange = e => {
@@ -26,18 +26,23 @@ export default class QuoteText extends React.Component<QuoteTextProps, QuoteText
     };
 
     handleBlur = e => {
+        //this.setState({ html: this.state.html + `<span>&rdquo;</span>`});
         this.props.onQuoteFinish(e.target.value);
     }
 
+    // <span>&rdquo;</span>
     render() {
         return (
-            <ContentEditable
-                html={this.state.html}
-                disabled={false}
-                className={styles.quote_text}
-                onChange={this.handleChange}
-                onBlur={this.handleBlur}
-            />
+            <div className={styles.quote_text}>
+                <span className={styles.quote_open}>&ldquo;</span>
+                <ContentEditable
+                    html={this.state.html}
+                    disabled={false}
+                    className={styles.quote_input}
+                    onChange={this.handleChange}
+                    onBlur={this.handleBlur}
+                />
+            </div>
         )
     }
 }

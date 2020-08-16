@@ -6,10 +6,21 @@
 }
 
 .quote_text {
-    height: 360px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 36px;
-    overflow-wrap: break-word;
+    height: 360px;
     padding: 12px;
     border-bottom: 2px solid #000000;
+}
+
+.quote_open {
+    font-size: 72px;
+    position: absolute;
+}
+
+.quote_input {
+    display: inline-block;
+    overflow-wrap: break-word;
+    margin-top: 28px;
+    margin-left: 28px;
 }

@@ -11,7 +11,6 @@ export default function QuoteContainer(props) {
                 <div className="">
                     <QuoteCard />
                 </div>
-                <ActionBar />
             </div>
         </div>
     )
