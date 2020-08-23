@@ -1,5 +1,8 @@
 module.exports = {
-  purge: [],
+  purge: [
+    './components/**/*.tsx',
+    './pages/**/*.tsx'
+  ],
   theme: {
     backgroundColor: theme => ({
       primary: '#FBF0D9',   /* Kindle sepia background color */
